@@ -44,14 +44,12 @@ public class AppTest {
 	}
 	
 	/**
-	 * Función que se ejecuta después del test y añade a setData el objeto t_probabilidad y unos valores maximos y minimos
+	 * Función que se ejecuta después del test y añade a t_probabilidad2 el valor de la instancia t_probabilidad y a setData t_probabilidad
 	 */
 	@After
 	public void After1() {
 		t_probabilidad2 = t_probabilidad;
 		t_range.setData(t_probabilidad);
-		t_range.setMin((float)1.15);
-		t_range.setMax((float)2.50);
 	}
 	
 	/**
@@ -60,6 +58,16 @@ public class AppTest {
 	@Test
 	public void Test3() {
 		assertEquals("Prueba3: comprobar que los objetos son iguales",t_probabilidad2,t_range.getData());
+	}
+	
+	/**
+	 * Test que verifica que la variable min de t_range es menor que max de t_range
+	 */
+	@Test
+	public void Test4() {
+		t_range.setMin((float)1.15);
+		t_range.setMax((float)2.50);
+		assertTrue("Prueba 4: Comprobar que el getMin es menor que getMax", MethodTest.getMinimo(t_range.getMin(),t_range.getMax()));
 	}
 
 }
