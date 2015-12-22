@@ -2,6 +2,7 @@ package test;
 
 import static org.junit.Assert.*;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -11,9 +12,10 @@ import evolutionary_algorithms.complement.Range;
 public class AppTest {
 	
 	/**
-	 * Definimos una variable de tipo Probability y otra de Range para realizar las pruebas
+	 * Definimos dos variables de tipo Probability y otra de Range para realizar las pruebas
 	 */
 	Probability t_probabilidad;
+	Probability t_probabilidad2;
 	Range t_range;
 	
 	@Before
@@ -39,6 +41,25 @@ public class AppTest {
 	@Test
 	public void test2() {
 		assertNotNull("Prueba2: Comprobar que no sea null",t_range);
+	}
+	
+	/**
+	 * Función que se ejecuta después del test y añade a setData el objeto t_probabilidad y unos valores maximos y minimos
+	 */
+	@After
+	public void After1() {
+		t_probabilidad2 = t_probabilidad;
+		t_range.setData(t_probabilidad);
+		t_range.setMin((float)1.15);
+		t_range.setMax((float)2.50);
+	}
+	
+	/**
+	 * Test que verifica que el objeto t_probabilidad2 es el mismo que contiene el objeto t_range
+	 */
+	@Test
+	public void Test3() {
+		assertEquals("Prueba3: comprobar que los objetos son iguales",t_probabilidad2,t_range.getData());
 	}
 
 }
