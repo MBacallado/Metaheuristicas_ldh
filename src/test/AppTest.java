@@ -32,5 +32,13 @@ public class AppTest {
 	public void test1() {
 		assertEquals("Prueba1: Primera prueba comprobando que la probabilidad es 3.55", (float)3.55, t_probabilidad.getProbability(), (float)3.55);
 	}
+	
+	/**
+	 * Test que verifica que el objeto t_range no sea null
+	 */
+	@Test
+	public void test2() {
+		assertNotNull("Prueba2: Comprobar que no sea null",t_range);
+	}
 
 }
